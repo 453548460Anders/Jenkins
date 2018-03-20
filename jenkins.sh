@@ -6,10 +6,12 @@ APP_NAME="Jenkins"
 project_infoplist_path="./${APP_NAME}/Info.plist"
 
 #取版本号
-bundleShortVersion=$(/usr/libexec/PlistBuddy -c "print CFBundleShortVersionString" "${project_infoplist_path}")
+bundleShortVersion=$(/usr/libexec/PlistBuddy -c "-----> print CFBundleShortVersionString" "${project_infoplist_path}")
 
 #取build值
 bundleVersion=$(/usr/libexec/PlistBuddy -c "print CFBundleVersion" "${project_infoplist_path}")
+
+echo "anderson log ==========> "
 
 DATE="$(date +%Y%m%d)"
 IPANAME="${APP_NAME}_V${bundleShortVersion}_${DATE}.ipa"
@@ -23,4 +25,4 @@ echo "=================clean================="
 xcodebuild -workspace "${APP_NAME}.xcworkspace" -scheme "${APP_NAME}"  -configuration 'Debug' clean
 
 echo "+++++++++++++++++build+++++++++++++++++"
-xcodebuild -workspace "${APP_NAME}.xcworkspace" -scheme "${APP_NAME}" -sdk iphoneos -configuration 'Debug' CODE_SIGN_IDENTITY="${CODE_SIGN_DISTRIBUTION}" SYMROOT='$(PWD)'
+xcodebuild -workspace "${APP_NAME}.xcworkspace" -scheme "${APP_NAME}" -sdk iphoneos -configuration 'Debug' CODE_SIGN_IDENTITY="${CODE_SIGN_DEVELOPMENT}" SYMROOT='$(PWD)'
