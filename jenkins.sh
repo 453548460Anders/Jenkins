@@ -1,9 +1,11 @@
 # 工程名
 APP_NAME="Jenkins"
 # 证书
-CODE_SIGN_DEVELOPMENT="iPhone Distribution: SunEee Weilian Technology Development Co., Ltd."
+# CODE_SIGN_DEVELOPMENT="iPhone Distribution: SunEee Weilian Technology Development Co., Ltd."
 # info.plist路径
 project_infoplist_path="./${APP_NAME}/Info.plist"
+
+echo ${project_infoplist_path}
 
 #取版本号
 #bundleShortVersion=$(/usr/libexec/PlistBuddy -c "-----> print CFBundleShortVersionString" "${project_infoplist_path}")
